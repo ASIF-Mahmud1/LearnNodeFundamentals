@@ -38,7 +38,7 @@ let iterateLetters= [
 let allLetters= [
     {
         letter: 'a',
-        visited: true
+        visited: false
     },
     {
         letter: 'b',
@@ -46,7 +46,7 @@ let allLetters= [
     },
     {
         letter: 'c',
-        visited: true
+        visited: false
     },
     {
         letter: 'd',
@@ -63,7 +63,7 @@ iterateLetters.forEach((startLetter,index)=>{
     let count=0
     let temp=''
     refreshLetters(allLetters)
-    while(count==iterateLetters.length-1)
+    while(count<=iterateLetters.length-1 )
     {
         allLetters.forEach(function(node, innerIndex, theArray) {
             if(node.visited==false && index!=innerIndex)
@@ -71,12 +71,13 @@ iterateLetters.forEach((startLetter,index)=>{
                 temp=startLetter.letter+node.letter
                 if(temp.length==iterateHowManyTimes)
                 {
+                    console.log(temp)
                     ultimateArray.push(temp)
                     theArray[innerIndex].visited=true
-                    count++
                 }
             }
           })
+          count++ 
     }
 })
 
