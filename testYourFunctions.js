@@ -65,35 +65,32 @@ let allLetters= [
 
 //    console.log("while loop ran ", howManyTime, " times")
  
-   console.table(allLetters)
    let ultimateArray=[]
    function blackBox(startLetterIndex,word_length,allLetters)
    {
        refreshLetters(allLetters)
        allLetters[startLetterIndex].visited=true
        let str= allLetters[startLetterIndex].letter
-        console.table(allLetters)
         while(!allVisited(allLetters))
         {
             
             for(let i=0;i<allLetters.length;i++)
             {
-                allLetters[i].visited=true
-    //            if(allLetters[i].visited==false)
-    //            {
-    //                let temp= str+ allLetters[i].letter
-    //                if(temp.letter==word_length)
-    //                {
-    //                     ultimateArray.push(temp)
-    //                     allLetters[i].visited=true
-    //                }
-    //                else if(temp.length<word_length)
-    //                {
-    //                    str= str+ allLetters[i].letter
-    //                    allLetters[i].visited=true
-
-    //                }
-    //            }
+              
+                if(allLetters[i].visited==false)
+                {
+                   let temp= str+ allLetters[i].letter
+                   if(temp.length==word_length)
+                   {
+                        ultimateArray.push(temp)
+                   }
+                   else if(temp.length<word_length)
+                   {
+                       str= str+ allLetters[i].letter
+                   }
+                   allLetters[i].visited=true
+                   console.log(str)
+                }
             }
         }
    }
@@ -105,5 +102,5 @@ let allLetters= [
 
    console.log("All visited ", allVisited(allLetters))
    
-
+console.table(ultimateArray)
    ///////////////////////////////////////
