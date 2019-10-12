@@ -54,7 +54,7 @@ let allLetters= [
     }
     ]
 let ultimateArray=[]
-let iterateHowManyTimes=2
+let iterateHowManyTimes=3
     
 //console.table(allLetters)
 // console.table(iterateLetters)
@@ -63,25 +63,26 @@ iterateLetters.forEach((startLetter,index)=>{
     let count=0
     let temp=''
     refreshLetters(allLetters)
-    while(count<=iterateLetters.length-1 )
+    console.table(allLetters)
+
+    while(count<=iterateLetters.length-2 )
     {
         allLetters.forEach(function(node, innerIndex, theArray) {
             if(node.visited==false && index!=innerIndex)
             {
-                temp=startLetter.letter+node.letter
-                if(temp.length==iterateHowManyTimes)
-                {
-                    console.log(temp)
-                    ultimateArray.push(temp)
-                    theArray[innerIndex].visited=true
-                }
+                theArray[innerIndex].visited=true
+                count++ 
+                console.log(startLetter.letter,node.letter,node.visited)
             }
           })
-          count++ 
+        //  console.log(startLetter.letter,node.letter)
+
+          console.log(count)
+          console.table(allLetters)
     }
 })
 
-console.log(ultimateArray.length)
+//console.log(ultimateArray.length)
 
 
 
