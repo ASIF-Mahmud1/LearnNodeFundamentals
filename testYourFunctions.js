@@ -41,5 +41,22 @@ let allLetters= [
         }
     }
 
-    let informMe= allVisited(allLetters)
-    console.log(informMe)
+
+    let howManyTime=0
+
+   while(! allVisited(allLetters))
+   {
+    allLetters.forEach(function(node, index, theArray) {
+        if(node.visited==false)
+        {
+            theArray[index].visited =true
+
+        }
+      })
+
+      howManyTime++
+   }
+
+   console.log("while loop ran ", howManyTime, " times")
+ 
+   console.table(allLetters)
