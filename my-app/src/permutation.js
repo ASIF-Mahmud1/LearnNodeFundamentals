@@ -52,11 +52,11 @@ while(counter<=wordLength)
 
 let unique = [...new Set(outer)];
 // console.table(outer)
-console.table(unique)
-console.table(inner)
-console.log(outer.length)
+// console.table(unique)
+ console.table(inner)
+// console.log(outer.length)
 
-console.log(unique.length)
+// console.log(unique.length)
 
 export default unique
 
