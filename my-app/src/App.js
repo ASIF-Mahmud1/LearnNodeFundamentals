@@ -7,14 +7,36 @@ class  App extends React.Component {
   state= {
     typeWord: '',
   }
+  componentDidMount= ()=>{
+    
+  }
   handleChange=(event)=>{
     this.setState({
       typeWord:event.target.value
     })  //,()=>{console.log(this.state.typeWord)}
   }
   submitWord=()=>{
+    fetch("http://localhost:4000",{mode: "no-cors"})
+    //  .then(response => response.json())
+      .then(responseJson => {
+        console.log(responseJson)
+     // console.log("sda" ,JSON.stringify(responseJson))
+      })
+      ///////////
+    //  return fetch(urlToUser, parameters)
+// .then(response => {
+//   return response.text()
+// })
+// .then((data) => {
+//   console.log(data)
+//   //resolve(data ? JSON.parse(data) : {})
+// })
+// .catch((error) => {
+//   //reject(error)
+//   console.log(error)
+// })
   //  alert(this.state.typeWord)
-  PossibleWords.indexOf(this.state.typeWord)>=0? alert(`Found at index ${PossibleWords.indexOf(this.state.typeWord)}`) : alert("Not Found")
+ // PossibleWords.indexOf(this.state.typeWord)>=0? alert(`Found at index ${PossibleWords.indexOf(this.state.typeWord)}`) : alert("Not Found")
   }
 render()
 {
