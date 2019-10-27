@@ -1,6 +1,8 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
+app.use(cors())
 const port = 4000
  
 app.get('/', function (req, res) {
@@ -10,7 +12,7 @@ app.get('/', function (req, res) {
  res.json({a:"good"})
 })
 
-app.get('/listStudent', (req, res) =>{
+app.get('/listWords', (req, res) =>{
     let sed= {a:"trash"}
     //res.body({a: "lol"}) 
 
