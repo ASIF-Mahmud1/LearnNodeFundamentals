@@ -1,9 +1,13 @@
 // let outer= ['a','a','a','a','a']
 // let inner=['a','a','a','a','a']
+// let outer= ['e','m','o','u','s','z','a']  
+// let inner=['e','m','o','u','s','z','a']
+
+// let outer= ['e','m','o','u','s','e','z', 'l']  
+// let inner=['e','m','o','u','s','e','z','l']
+
 let outer= ['e','m','o','u','s']  
 let inner=['e','m','o','u','s']
-
-
 let counter=0
 // while(counter<7)
 // {
@@ -51,8 +55,8 @@ while(counter<=wordLength)
 
 
 let unique = [...new Set(outer)];
-// console.table(outer)
-// console.table(unique)
+//  console.table(outer.length)
+//  console.table(unique.length)
 // console.table(inner)
 // console.log(outer.length)
 
