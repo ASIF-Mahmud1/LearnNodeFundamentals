@@ -12,7 +12,7 @@ class  App extends React.Component {
     .then(response => response.json())
     .then(responseJson => {
       console.log(responseJson)
-      this.setState({wordList:responseJson})
+      this.setState({wordList:responseJson.words})
     })
 
   }
