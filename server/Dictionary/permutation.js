@@ -61,12 +61,15 @@ let unique = [...new Set(outer)];
 // export default unique
 
 // exports.Permutation=()=>{unique }
-module.exports = unique;
+
+// module.exports= inner
+// module.exports = unique;
 
 
 
 
-
+exports.inner= inner
+exports.unique= unique
 
 
 

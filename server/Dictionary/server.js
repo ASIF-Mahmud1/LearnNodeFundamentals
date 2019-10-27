@@ -12,8 +12,8 @@ app.get('/', function (req, res) {
 })
 
 app.get('/listWords', (req, res) =>{
-  getListOfWords((words)=>{
-    res.json(words)
+  getListOfWords((words, letters)=>{
+    res.json({words,letters})
   })
 })
  

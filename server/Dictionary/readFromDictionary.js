@@ -1,9 +1,9 @@
 const fs = require("fs")
-const PossibleWords =require('./permutation')
-
+const Permutation =require('./permutation')
+const inner= Permutation.inner
+const PossibleWords= Permutation.unique
 let dictionary=[]
 let intersection=[]
-
  function getListOfWords(callBack)
  {
   fs.readFile('dictionary.txt', 'utf8',(err, data) => {
@@ -13,7 +13,7 @@ let intersection=[]
  
      intersection = temp.filter(element => PossibleWords.includes(element))
 
-     callBack(intersection)
+     callBack(intersection,inner)
   });
 
  }
