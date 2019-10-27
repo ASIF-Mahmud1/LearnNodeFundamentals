@@ -20,9 +20,9 @@ class  App extends React.Component {
     //this.state.wordList.indexOf(event.target.value)
     this.setState({
       typeWord:event.target.value
-    }) 
+    },()=>{this.checkIfWordFound() }) 
   }
-  submitWord=()=>{
+  checkIfWordFound=()=>{
     //alert(this.state.typeWord)
     
     let index=this.state.wordList.findIndex((word)=>{
@@ -32,7 +32,7 @@ class  App extends React.Component {
     if(  index>=0 )
     {
     // alert(`Word found at  index ${index}`)
-     this.setState({wordFound:`Word found at  index ${index}`})
+     this.setState({wordFound:`${this.state.typeWord} found at  index ${index}`})
     }
     else
     {
@@ -51,7 +51,7 @@ render()
           Word:
           <input style={{height: 40, fontSize:20,textAlign:"center"}} placeholder="please enter the word" type="text" value={this.state.typeWord} onChange={(e)=>{this.handleChange(e)}} />
         </label>
-        <button style={{marginTop:50,height:50,width: 100, fontSize:20,textAlign:"center"}} onClick ={()=>{this.submitWord()}} > Submit</button>
+        {/* <button style={{marginTop:50,height:50,width: 100, fontSize:20,textAlign:"center"}} onClick ={()=>{alert("Button works")}} > Submit</button> */}
         {
           this.state.wordFound !== '' &&
           <label>{this.state.wordFound} </label>
