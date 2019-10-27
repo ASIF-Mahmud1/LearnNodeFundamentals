@@ -1,13 +1,18 @@
 import React from 'react';
 import './App.css';
-import PossibleWords from './permutation'
-
 class  App extends React.Component {
   state= {
     typeWord: '',
+    wordList:[]
   }
   componentDidMount= ()=>{
-    
+
+    fetch("http://localhost:4000/listWords")
+    .then(response => response.json())
+    .then(responseJson => {
+      this.setState({wordList:responseJson})
+    })
+
   }
   handleChange=(event)=>{
     this.setState({
@@ -15,17 +20,12 @@ class  App extends React.Component {
     }) 
   }
   submitWord=()=>{
-    fetch("http://localhost:4000/listWords")
-      .then(response => response.json())
-      .then(responseJson => {
-        console.log(responseJson)
-      //console.log(JSON.stringify(responseJson))
-      })
+
      
   }
 render()
 {
-  console.log(`Found at index ${PossibleWords.indexOf(this.state.typeWord)}`)
+ this.state.wordList.length>0 ? console.log(this.state.wordList): console.log("wordList Empty")
   return (
     <div className="App">
       <header className="App-header">

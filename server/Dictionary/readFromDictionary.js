@@ -4,9 +4,6 @@ const PossibleWords =require('./permutation')
 let dictionary=[]
 let intersection=[]
 
-
-
-
  function getListOfWords(callBack)
  {
   fs.readFile('dictionary.txt', 'utf8',(err, data) => {
@@ -20,8 +17,5 @@ let intersection=[]
   });
 
  }
- getListOfWords((words)=>{
-  //  console.log(words)
-  //  console.log("Hi")
- })
+
  module.exports= getListOfWords
