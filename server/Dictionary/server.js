@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const getListOfWords =require('./readFromDictionary')
 
 app.use(cors())
 const port = 4000
@@ -13,12 +14,16 @@ app.get('/', function (req, res) {
 })
 
 app.get('/listWords', (req, res) =>{
-    let sed= {a:"trash"}
+  getListOfWords((words)=>{
+  //  console.log(words)
+    res.json(words)
+  })
+    let sed= {a:"trash", fun: getListOfWords}
     //res.body({a: "lol"}) 
 
    // res.send('Hello World')
 
-    res.json(sed)
+  //  res.json(sed)
 
 })
  
