@@ -16,18 +16,31 @@ const math = String.raw`
 
 const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
 const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
-
+// `f(x) = \2int_{-infty}^infty hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi`
+let equations= 
+[
+  " $ f(x) = x^2$ is an example",
+  "`"+`U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))`+"`",
+  "`"+` U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))`+"`",
+  "`"+`frac{1}{sqrt{x}} `+"`"
+    // `  F(x) =  \2int_{b}^{a}  frac{1}{3}x^3`
+]
 export default class Demo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      math
+      math :equations[1],
+      listOfEquation:equations
     }
   }
   handleChange = (event) => {
-    this.setState({
-      math: event.target.value
-    })
+    {
+      this.setState({
+        math: event.target.value
+      })
+    }
+  
+
   }
   render() {
     return (
@@ -37,7 +50,20 @@ export default class Demo extends Component {
           <textarea style={{ height: 100, width: 600 }} type="text" value={this.state.math} onChange={(event) => this.handleChange(event)} />
 
         </label>
-        <MathJax math={this.state.math} />
+       
+        <label>  <br/><b> Output :</b>     <MathJax math={this.state.math} /> 
+        </label>
+ 
+        <h4>Some Equations: </h4>
+        <ul>
+        {
+          this.state.listOfEquation.map((item,index)=>(
+            
+            <li key={item}>{item}</li>
+
+    ))
+        }
+        </ul>
       </>
     )
   }
