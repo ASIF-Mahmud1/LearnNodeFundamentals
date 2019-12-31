@@ -1,5 +1,5 @@
 const read =() => {
-    return fetch( '/' , {
+    return fetch('http://localhost:5000', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -20,3 +20,7 @@ const read =() => {
     read,
    
   }
+
+  /*
+  http://localhost:4000/listWords
+  */
