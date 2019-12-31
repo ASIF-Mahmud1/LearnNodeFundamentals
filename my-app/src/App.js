@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MathJax from 'react-mathjax-preview'
-import { read } from './Math/api-math'
+import { read ,create} from './Math/api-math'
 const asciimath = '`sum_(i=1)^n i^3=((n(n+1))/2)^2`'
 const math = String.raw`
   <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -46,6 +46,52 @@ export default class Demo extends Component {
       console.log("Hi", data)
     })
   }
+
+  postData=()=>{
+    // create().then((response) => response.json())
+    // .then((data) => {
+    //   console.log('Success:', data);
+    // })
+    // .catch((error) => {
+    //   console.error('Error:', error);
+    // });
+
+    ///////////////////////////////////
+
+    // const data = { username: 'example' };
+
+    // fetch('http://localhost:5000', {
+    //   method: 'POST', // or 'PUT'
+    //   mode: 'no-cors',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   console.log('Success:', data);
+    // })
+    // .catch((error) => {
+    //   console.error('Error:', error, "life");
+    // });
+    //////////////////////////////////////////
+  
+  
+  ///////////////////////////////////////////////////////////
+let blog= {
+  a: 'Apple'
+}
+  create( blog).then(data => {
+    if (data.error) {
+      console.log("Error Occured")
+    } else {
+      console.log("Data  ",data)
+    }
+  })
+  //////////////////////////////////////////////////////////
+  }
+
   render() {
     return (
 
@@ -69,6 +115,8 @@ export default class Demo extends Component {
           }
         </ul>
         <button onClick={() => { this.getData() }} >Click Me </button>
+
+        <button onClick={() => { this.postData() }} >Save Data </button>
       </>
     )
   }
