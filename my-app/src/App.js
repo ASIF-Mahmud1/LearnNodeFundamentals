@@ -15,21 +15,21 @@ const math = String.raw`
    ${asciimath}`
 
 const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`
-const ascii = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))'
-// `f(x) = \2int_{-infty}^infty hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi`
+//const asciimath = '`sum_(i=1)^n i^3=((n(n+1))/2)^2`' // `f(x) = \2int_{-infty}^infty hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi`
 let equations= 
 [
   " $ f(x) = x^2$ is an example",
   "`"+`U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))`+"`",
   "`"+` U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))`+"`",
-  "`"+`frac{1}{sqrt{x}} `+"`"
+  "`"+`frac{1}{sqrt{x}} `+"`",
+  asciimath
     // `  F(x) =  \2int_{b}^{a}  frac{1}{3}x^3`
 ]
 export default class Demo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      math :equations[1],
+      math :  asciimath , // equations[1],
       listOfEquation:equations
     }
   }
