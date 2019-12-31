@@ -7,7 +7,7 @@ app.use(cors())
 const port = 5000
  
 app.get('/', function (req, res) {
-
+console.log("Server hitted")
  res.json({a:"Math is good"})
 })
 

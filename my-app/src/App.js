@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-
 import MathJax from 'react-mathjax-preview'
-
+import {read} from './Math/api-math'
 const asciimath = '`sum_(i=1)^n i^3=((n(n+1))/2)^2`'
 const math = String.raw`
   <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -42,6 +41,11 @@ export default class Demo extends Component {
   
 
   }
+  getData=()=>{
+read().then((data)=>{
+  console.log("Hi")
+})
+  }
   render() {
     return (
 
@@ -64,6 +68,7 @@ export default class Demo extends Component {
     ))
         }
         </ul>
+        <button onClick={()=>{this.getData()}} >Click Me </button>
       </>
     )
   }
