@@ -1,5 +1,6 @@
 import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import MathJax from 'react-mathjax-preview'
 
 // class App extends React.Component {
 // constructor(props){
@@ -47,25 +48,26 @@ import { Editor } from '@tinymce/tinymce-react';
 
 class MyComponent extends React.Component {
     constructor(props) {
-      super(props);
-  
-      this.state = { content: '' };
-      this.handleEditorChange = this.handleEditorChange.bind(this);
+        super(props);
+
+        this.state = { content: '' };
+        this.handleEditorChange = this.handleEditorChange.bind(this);
     }
-  
+
     handleEditorChange(content, editor) {
-      this.setState({ content });
+        this.setState({ content });
     }
-  
+
     render() {
-      return (
-          <>
-                    <Editor value={this.state.content} onEditorChange={this.handleEditorChange} />
+        return (
+            <>
+                <Editor value={this.state.content} onEditorChange={this.handleEditorChange} />
 
-<div dangerouslySetInnerHTML={{__html: this.state.content}} />
-          </>
-      )
+                <div dangerouslySetInnerHTML={{ __html: this.state.content }} />
+        <div>{ " $ f(x) = x^2$ is an example"}</div>
+            </>
+        )
     }
-  }
+}
 
-  export default MyComponent
+export default MyComponent
