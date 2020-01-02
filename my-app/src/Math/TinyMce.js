@@ -45,18 +45,27 @@ import MathJax from 'react-mathjax-preview'
 // export default App;
 
 
-
+const asciimath = '`sum_(i=1)^n i^3=((n(n+1))/2)^2`'
 class MyComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: '' };
+        this.state = { content: '' ,   math: asciimath};
         this.handleEditorChange = this.handleEditorChange.bind(this);
     }
 
     handleEditorChange(content, editor) {
-        this.setState({ content });
+        this.setState({ content, math:content });
     }
+    handleChange = (event) => {
+        {
+          this.setState({
+            math: event.target.value
+          })
+        }
+    
+    
+      }
 
     render() {
         return (
@@ -65,6 +74,10 @@ class MyComponent extends React.Component {
 
                 <div dangerouslySetInnerHTML={{ __html: this.state.content }} />
         <div>{ " $ f(x) = x^2$ is an example"}</div>
+
+        <label>  <br /><b> Output :</b>     <MathJax math={this.state.math} >  {" $ f(x) = x^2$ is an example"} </MathJax> </label>
+        <textarea style={{ height: 100, width: 600 }} type="text" value={this.state.math} onChange={(event) => this.handleChange(event)} />
+
             </>
         )
     }
