@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 var bodyParser = require('body-parser')
+const mongoose = require('mongoose');
+
 
 //console.log(process.memoryUsage())
 app.use(bodyParser.urlencoded())
@@ -26,4 +28,11 @@ app.post('/', function (req, res) {
 })
 
 
+let mongoUri='mongodb://localhost/my_database'
+
+mongoose.Promise = global.Promise
+mongoose.connect(mongoUri, { useNewUrlParser: true, useCreateIndex: true })
+mongoose.connection.on('error', () => {
+  throw new Error(`unable to connect to database: ${mongoUri}`)
+})
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
