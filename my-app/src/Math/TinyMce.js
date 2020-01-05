@@ -1,7 +1,7 @@
 import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import MathJax from 'react-mathjax-preview'
-import { read, create } from './api-math'
+import { read, create,getTopic } from './api-math'
 
 
 const asciimath = '`sum_(i=1)^n i^3=((n(n+1))/2)^2`'
@@ -38,7 +38,16 @@ class MyComponent extends React.Component {
           }
         })
       }
-
+      getTopicFromServer=()=>{
+      //  alert("Just a trick")
+      getTopic().then(data => {
+        if (data.error) {
+          console.log("Error Occured")
+        } else {
+          console.log("mah Topic:  ", data)
+        }
+      })
+      }
     render() {
         return (
             <>
@@ -64,6 +73,7 @@ class MyComponent extends React.Component {
         <label>  <br /><b> Output :</b>     <MathJax math={this.state.math} >  {" $ f(x) = x^2$ is an example"} </MathJax> </label>
         <textarea style={{ height: 100, width: 600 }} type="text" value={this.state.math} onChange={(event) => this.handleChange(event)} />
        <br/>  <button onClick={() => { this.postData() }} >Save Data </button>
+       <br/>  <button onClick={() => { this.getTopicFromServer() }} >Call Server Asap </button>
 
             </>
         )

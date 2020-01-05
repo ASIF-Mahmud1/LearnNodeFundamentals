@@ -20,6 +20,18 @@ app.get('/', function (req, res) {
     res.json({ a: "Math is good" })
 })
 
+app.get( '/fetchTopic', function(req,res){
+    console.log("Someone is requesting for Topic")
+    Topic.find({}, function(err, users) {
+        var userMap = {};
+    
+        users.forEach(function(user) {
+          userMap[user._id] = user;
+        });
+    
+        res.json(userMap);  
+      });
+})
 app.post('/', function (req, res) {
     console.log("Post Request /")
     let topic= new Topic();
