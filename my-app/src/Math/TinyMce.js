@@ -9,7 +9,11 @@ class MyComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { content: '' ,   math: asciimath};
+        this.state = {
+           content: '' ,  
+            math: asciimath,
+            allTopics: `<ul><li><p>Soone </p></li><li><p>Soone </p></li><li><p>Soone </p></li> </ul>` // allTopics not needed
+          };
         this.handleEditorChange = this.handleEditorChange.bind(this);
     }
 
@@ -45,6 +49,22 @@ class MyComponent extends React.Component {
           console.log("Error Occured")
         } else {
           console.log("mah Topic:  ", data)
+       ////////////////////////////////////   
+          let temp=''
+          data.map((item,index) =>
+         temp=  `${temp} <li>${item.body}</li>`
+        );
+        temp= `<ul>`+ temp+ `</ul>`
+
+        ////////////////////////////////////
+
+        // let temp
+        // data.map((item,index)=>{
+        //   temp=temp+it
+        // })
+      //  temp= `<ul>${temp}</ul>`
+      //  temp=temp
+        this.setState({allTopics:temp, content: temp})
         }
       })
       }
@@ -74,7 +94,7 @@ class MyComponent extends React.Component {
         <textarea style={{ height: 100, width: 600 }} type="text" value={this.state.math} onChange={(event) => this.handleChange(event)} />
        <br/>  <button onClick={() => { this.postData() }} >Save Data </button>
        <br/>  <button onClick={() => { this.getTopicFromServer() }} >Call Server Asap </button>
-
+       <div dangerouslySetInnerHTML={{ __html: this.state.allTopics }} />
             </>
         )
     }

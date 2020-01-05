@@ -23,10 +23,11 @@ app.get('/', function (req, res) {
 app.get( '/fetchTopic', function(req,res){
     console.log("Someone is requesting for Topic")
     Topic.find({}, function(err, users) {
-        var userMap = {};
+        var userMap = [];
     
         users.forEach(function(user) {
-          userMap[user._id] = user;
+         // userMap[user._id] = user;
+          userMap.push({body: user.body})
         });
     
         res.json(userMap);  
