@@ -3,7 +3,9 @@ const cors = require('cors')
 const app = express()
 var bodyParser = require('body-parser')
 const mongoose = require('mongoose');
+const Topic = require('./models/topic.model')
 
+// console.log(Topic)
 
 //console.log(process.memoryUsage())
 app.use(bodyParser.urlencoded())
@@ -20,6 +22,19 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
     console.log("Post Request /")
+    let topic= new Topic();
+topic.body = req.body.a;
+topic.save(function (err) {
+    if(err)
+    {
+        console.log("Sth went wrong")
+    }
+    else 
+    {
+        console.log("All gucci")
+    }
+  //
+});
     console.log(req.body)
     //  res.json({message: req.body})
     res.status(200).json({
