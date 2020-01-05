@@ -1,48 +1,7 @@
 import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import MathJax from 'react-mathjax-preview'
-
-// class App extends React.Component {
-// constructor(props){
-// super(props)
-// this.state={
-//     topicContent: ''
-// }
-// }
-//   handleEditorChange = (e) => {
-//       this.setState({topicContent: e.target.getContent()})
-//     console.log('Content was updated:', e.target.getContent());
-//   }
-
-//   render() {
-//       console.log(Editor)
-//     return (
-//       <>
-//         <Editor
-//         initialValue={this.state.topicContent}
-//         init={{
-//           height: 500,
-//           menubar: false,
-//           plugins: [
-//             'advlist autolink lists link image charmap print preview anchor',
-//             'searchreplace visualblocks code fullscreen',
-//             'insertdatetime media table paste code help wordcount'
-//           ],
-//           toolbar:
-//             'undo redo | formatselect | bold italic backcolor | \
-//             alignleft aligncenter alignright alignjustify | \
-//             bullist numlist outdent indent | removeformat | help'
-//         }}
-//         onEditorChange={this.handleEditorChange}
-//       />
-//       <h3>Preview: </h3>
-//       {this.state.topicContent}
-//       </>
-//     );
-//   }
-// }
-
-// export default App;
+import { read, create } from './api-math'
 
 
 const asciimath = '`sum_(i=1)^n i^3=((n(n+1))/2)^2`'
@@ -65,6 +24,19 @@ class MyComponent extends React.Component {
         }
     
     
+      }
+      postData = () => {
+
+        let blog = {
+          a: this.state.math
+        }
+        create(blog).then(data => {
+          if (data.error) {
+            console.log("Error Occured")
+          } else {
+            console.log("Data  ", data)
+          }
+        })
       }
 
     render() {
@@ -91,6 +63,7 @@ class MyComponent extends React.Component {
 
         <label>  <br /><b> Output :</b>     <MathJax math={this.state.math} >  {" $ f(x) = x^2$ is an example"} </MathJax> </label>
         <textarea style={{ height: 100, width: 600 }} type="text" value={this.state.math} onChange={(event) => this.handleChange(event)} />
+       <br/>  <button onClick={() => { this.postData() }} >Save Data </button>
 
             </>
         )
