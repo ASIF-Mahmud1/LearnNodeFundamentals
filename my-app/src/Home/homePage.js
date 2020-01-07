@@ -82,7 +82,7 @@ class  SearchAppBar extends React.Component {
       <AppBar position="static">
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-            {/* <MenuIcon /> */}
+            <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
             Material-UI
