@@ -5,7 +5,7 @@ import App from './App'; // renders the create Topic Page
 import * as serviceWorker from './serviceWorker';
 import Topic from '../src/Topic/Topic'
 import Home from '../src/Home/homePage'
-ReactDOM.render(<Home />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
